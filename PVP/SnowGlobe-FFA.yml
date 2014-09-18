@@ -1,0 +1,220 @@
+info:
+    name: 'SnowGlobe'
+    gamemode: 'FFA'
+    authors:
+    - 'lemoncrap'
+    - 'FuzzNuggettt'
+    objective: "Make sure you have the most kills at the end of the game to win!"
+    spawn:
+        cylinder:
+            base: -222,91,-494
+            radius: 2
+            height: 1
+        yaw: 90
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 600
+    deathmessages: true
+    frozentime: 2400
+    selectablekits: false
+    deathdrops: false
+    rewards:
+        first:
+            gold: 8
+            xp: 8
+        second:
+            gold: 4
+            xp: 4
+        third:
+            gold: 2
+            xp: 2
+        kill:
+            gold: 5
+            xp: 5
+
+teams:
+    all:
+        name: ''
+        color: dark red
+        max: 100
+        spawns:
+            allspawn1:
+                cylinder:
+                    base: -234,50,-494
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn2:
+                cylinder:
+                    base: -269,50,-523
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn3:
+                cylinder:
+                    base: -276,51,-488
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn4:
+                cylinder:
+                    base: -326,51,-487
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn5:
+                cylinder:
+                    base: -314,51,-434
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn6:
+                cylinder:
+                    base: -309,65,-411
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn7:
+                cylinder:
+                    base: -231,66,-411
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn8:
+                cylinder:
+                    base: -239,54,-474
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn9:
+                cylinder:
+                    base: -273,62,-432
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn10:
+                cylinder:
+                    base: -282,51,-470
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn11:
+                cylinder:
+                    base: -217,50,-430
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn12:
+                cylinder:
+                    base: -230,71,-449
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn13:
+                cylinder:
+                    base: -258,68,-411
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn14:
+                cylinder:
+                    base: -276,68,-411
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn15:
+                cylinder:
+                    base: -273,64,-407
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn16:
+                cylinder:
+                    base: -295,52,-411
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn17:
+                cylinder:
+                    base: -308,54,-480
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn18:
+                cylinder:
+                    base: -300,60,-444
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn19:
+                cylinder:
+                    base: -254,53,-441
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn20:
+                cylinder:
+                    base: -274,49,-451
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn21:
+                cylinder:
+                    base: -302,56,-499
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+            allspawn22:
+                cylinder:
+                    base: -260,50,-471
+                    radius: 2
+                    height: 1
+                defaultkit: allkit
+
+kits:
+    allkit:
+        name: "Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+            1:
+                item: bow
+            4:
+                item: apple
+                amount: 16
+            5:
+                item: golden apple
+                amount: 5
+            19:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FFFFFF'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: leather leggings
+                color: 'FFFFFF'
+            boots:
+                item: iron boots
+        potions:
+        - regeneration,7,2
+
+regions:
+    worldprotect:
+        areas:
+            worldprotect:
+                cuboid:
+                    min: -348,33,-528
+                    max: -199,149,-381
+        rules:
+            deny-build:
+                action: build
+                access: deny
+            deny-destroy:
+                action: destroy
+                access: deny

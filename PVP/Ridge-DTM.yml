@@ -1,0 +1,314 @@
+info:
+    name: 'Ridge'
+    gamemode: 'dtm'
+    authors:
+    - 'RiotMaker808'
+    - 'Spurlex'
+    objective: "Break the enemy team's obsidian monument."
+    spawn: # default spawn
+        cylinder:
+            base: -230,123,-922
+            radius: 2
+            height: 0
+        yaw: 270
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective:
+            gold: 10
+            xp: 10
+
+teams:
+    aqua:
+        name: 'Aqua Team'  # team name (shown in game)
+        color: aqua # optional - default = gray
+        max: 100  #optional - default = infinite
+        spawns:
+            aquaspawn:  # spawn name (not used in game)
+                cylinder:
+                    base: -69,65,-1085
+                    radius: 1
+                    height: 1
+                defaultkit: 'spawnaqua'
+    green:
+        name: 'Green Team'  # team name (shown in game)
+        color: Green
+        max: 100
+        spawns:
+            greenspawn:  # spawn name (not used in game)
+                cylinder:
+                    base: -422,65,-759
+                    radius: 1
+                    height: 1
+                defaultkit: 'spawngreen'
+
+kits:
+    spawnaqua:
+        name: "Aqua Team Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: iron pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: wood
+                amount: 64
+            5:
+                item: glass
+                amount: 64
+            8:
+                item: golden apple
+                amount: 5
+            7:
+                item: cooked beef
+                amount: 64
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '00FFFF'
+                damage: -3000
+            chestplate:
+                item: leather chestplate
+                color: '00FFFF'
+                damage: -3000
+            leggings:
+                item: leather leggings
+                color: '00FFFF'
+                damage: -3000
+            boots:
+                item: leather boots
+                color: '00FFFF'
+                damage: -3000
+        potions:
+             - speed,30,2 # effect,duration,amplifier amplifier optional
+
+    spawngreen:
+        name: "Green Team Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: iron pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: wood
+                amount: 64
+            5:
+                item: glass
+                amount: 64
+            8:
+                item: golden apple
+                amount: 5
+            7:
+                item: cooked beef
+                amount: 64
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '00FF00'
+                damage: -3000
+            chestplate:
+                item: leather chestplate
+                color: '00FF00'
+                damage: -3000
+            leggings:
+                item: leather leggings
+                color: '00FF00'
+                damage: -3000
+            boots:
+                item: leather boots
+                color: '00FF00'
+                damage: -3000
+        potions:
+             - speed,30,2 # effect,duration,amplifier amplifier optional
+
+regions:
+    aqua-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -85,0,-1066
+                    max: -65,77,-1088
+        rules:
+            enter:  # rule name (not used in game)
+                action: enter
+                access: deny
+                team: green # optional, default any team
+                message: 'You cannot enter this region' # optional
+            build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    green-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -406,0,-775
+                    max: -427,75,-754
+        rules:
+            enter:  # rule name (not used in game)
+                action: enter
+                access: deny
+                team: aqua # optional, default any team
+                message: 'You cannot enter this region' # optional
+                material: gold block #optional
+            build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    aqua-front-monument: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -183,73,-976
+                    max: -191,85,-984
+        rules:
+            destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                team: aqua # optional, default any team
+                material: obsidian
+                message: 'You cannot destroy' # optional
+
+    aqua-back-monument: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -149,73,-1012
+                    max: -156,85,-1020
+        rules:
+            destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                team: aqua # optional, default any team
+                material: obsidian
+                message: 'You cannot destroy' # optional
+
+    green-front-monument: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -307,73,-867
+                    max: -299,85,-859
+        rules:
+            destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                team: green # optional, default any team
+                material: obsidian
+                message: 'You cannot destroy' # optional
+
+    green-back-monument: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -344,73,-832
+                    max: -335,85,-823
+        rules:
+            destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                team: green # optional, default any team
+                material: obsidian
+                message: 'You cannot destroy' # optional
+
+    spectator-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -240,110,-930
+                    max: -223,137,-914
+        rules:
+            enter:  # rule name (not used in game)
+                action: enter
+                access: deny
+                message: 'You cannot enter this region' # optional
+                material: gold block #optional
+            build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+monuments:
+    aqua-front-monument:
+        name: 'Front Monument'
+        team: aqua
+        material: obsidian
+        cuboid:
+            min: -183,73,-976
+            max: -191,85,-984
+    aqua-back-monument:
+        name: 'Back Monument'
+        team: aqua
+        material: obsidian
+        cuboid:
+            min: -149,73,-1012
+            max: -156,85,-1020
+
+    green-front-monument:
+        name: 'Front Monument'
+        team: green
+        material: obsidian
+        cuboid:
+            min: -307,73,-867
+            max: -299,85,-859
+    green-back-monument:
+        name: 'Back Monument'
+        team: green
+        material: obsidian
+        cuboid:
+            min: -344,73,-832
+            max: -335,85,-823

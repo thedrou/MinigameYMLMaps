@@ -1,0 +1,42 @@
+info:
+    name: 'Mad Match'
+    gamemode: 'colormatch'
+    authors:
+    - 'Spurlex'
+    - 'Tweeney'
+    objective: "Match your wool color to the color of the floor" #optional
+    spawn: # default spawn
+        cylinder:
+            base: 23,75,24
+            radius: 2
+            height: 1
+
+config:
+    forcerespawn: true # force respawn on death
+    timelimit: 300  # game length in seconds
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50  #optional - default = infinite
+        spawns:
+            players:  # spawn name (not used in game)
+                cuboid:
+                    min: 23,70,24
+                    max: 25,70,28
+
+arena:
+    cuboid:
+        min: -20,66,-20
+        max: 60,67,60

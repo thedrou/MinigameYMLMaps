@@ -1,0 +1,326 @@
+info:
+    name: 'Bridge Wars'
+    gamemode: 'DTN'
+    authors:
+    - 'SeanMe'
+    - 'iswirda'
+    - 'Spurlex'
+    objective: "Destroy the opponent teams Novas." #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -34,93,-302
+            radius: 2
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 2100  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 0 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: #optional
+            gold: 5 #optional default 0
+            xp: 2 #optional default 0
+        objective: #optional
+            gold: 15 #optional default 0
+            xp: 15 #optional default 0
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            redspawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 54,63,-285
+                    radius: 2
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: default #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Blue'  # team name (shown in game)
+        color: blue # optional - default = gray
+        prefix: '' # optional (goes before player name tag)
+        max: 100  #optional - default = 50
+        spawns:
+            bluespawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -123,63,-269
+                    radius: 2
+                    height: 1
+                yaw: 180 # optional
+                pitch: 0 # optional
+                defaultkit: default #optional, corresponds to the serverside name
+
+kits:
+    default: #serverside name (not used in game)
+        name: "Default Kit"
+        default: false #only if selectable kits active. default = false
+        items:
+            0: #slot
+                item: iron sword # material name
+            1: #slot
+                item: bow # material name
+            2: #slot
+                item: diamond pickaxe # material name
+            6: #slot
+                item: cooked beef # material name
+            7: #slot
+                item: wood # material name
+                amount: 64
+            8: #slot
+                item: wood # material name
+                amount: 64
+            10: #slot
+                item: arrow # material name
+                amount: 64
+
+tutorial:
+    step-1:
+        title: 'Destroy The Nova'
+        message:
+        - '§6--------------------------------------------------'
+        - '§cThis map is a §bDestory The Nova §c(DTN) map'
+        - '§aDestroy the enemy teams novas before they destory yours.'
+        - '§6--------------------------------------------------'
+        teleport:
+            point: -24,92,-303
+            yaw: 0
+            pitch: 30
+    step-2:
+        title: 'Spawn'
+        message:
+        - '§6--------------------------------------------------'
+        - '§aThis is the team §bspawn.'
+        - '§aHere is where you will spawn when you join the game.'
+        - '§6--------------------------------------------------'
+        teleport:
+            point: -117,62,-278
+            yaw: 45
+            pitch: 0
+    step-3:
+        title: 'Map'
+        message:
+        - '§6--------------------------------------------------'
+        - '§aThis is a §bNova.'
+        - '§aIt must be hit with a diamond pickaxe §b150 times to destroy it.'
+        - '§6--------------------------------------------------'
+        teleport:
+            point: -67,78,-282
+            yaw: 139
+            pitch: 0
+    step-4:
+        title: 'Objective'
+        message:
+        - '§6--------------------------------------------------'
+        - '§aThis is the §bmap you will play on.'
+        - '§aGood luck and have fun.'
+        - '§6--------------------------------------------------'
+        teleport:
+            point: -33,132,-276
+            yaw: 0
+            pitch: 90
+
+regions:
+    map: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -137,-100000,-250
+                    max: 67,95,-303
+
+        rules:
+            leave-map: # rule name (not used in game)
+                action: leave
+                access: deny
+                message: 'You cannot leave the map!' # optional
+    spectators: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -40,87,-299
+                    max: -29,104,-320
+
+        rules:
+            enter-spawn: # rule name (not used in game)
+                action: enter
+                access: deny
+                message: 'You cannot enter the spectators platform!' # optional
+            break-spawn: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot modify the spectators platform!' # optional
+            build-spawn: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot modify the spectators platform!' # optional
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: 48,55,-288
+                    max: 58,80,-263
+
+        rules:
+            fight:
+                action: fight
+                access: deny
+            break-vine: # rule name (not used in game)
+                action: destroy
+                access: allow
+                material: vine
+                team: red
+            break-iron: # rule name (not used in game)
+                action: destroy
+                access: allow
+                material: iron block
+                message: 'Mine mine mine all day... Mining all the iron away.' # optional
+                team: red
+            enter-spawn: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue
+                message: 'You mat not enter Red Team''s spawn room.' # optional
+            build-spawn: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You may not modify the spawn rooms!' # optional
+            break-spawn: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You may not modify the spawn rooms!' # optional
+    blue-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -117,55,-266
+                    max: -127,80,-291
+
+        rules:
+            fight:
+                action: fight
+                access: deny
+            break-vine: # rule name (not used in game)
+                action: destroy
+                access: allow
+                material: vine
+                team: blue
+            break-iron: # rule name (not used in game)
+                action: destroy
+                access: allow
+                material: iron block
+                message: 'Mine mine mine all day... Mining all the iron away.' # optional
+                team: blue
+            enter-spawn: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red
+                message: 'You mat not enter Blue Team''s spawn room.' # optional
+            build-spawn: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You may not modify the spawn rooms!' # optional
+            break-spawn: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You may not modify the spawn rooms!' # optional
+    craft: # region name (not used in game)
+        areas:
+            red: #area name  (not used in game)
+                cuboid:
+                    min: 52,56,-270
+                    max: 55,56,-270
+            blue:
+                cuboid:
+                    min: -121,56,-284
+                    max: -124,56,-284
+
+        rules:
+            leave-map: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You may not destroy these crafting tables!' # optional
+    enchant: # region name (not used in game)
+        areas:
+            red: #area name  (not used in game)
+                cuboid:
+                    min: 42,41,-282
+                    max: 42,41,-282
+            blue:
+                cuboid:
+                    min: -111,41,-272
+                    max: -111,41,-272
+
+        rules:
+            leave-map: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You don''t need to take this!' # optional
+    beacon: # region name (not used in game)
+        areas:
+            red: #area name  (not used in game)
+                cuboid:
+                    min: 53,83,-274
+                    max: 55,84,-272
+            blue:
+                cuboid:
+                    min: -122,83,-280
+                    max: -124,84,-282
+
+        rules:
+            leave-map: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You are not allowed these diamonds!' # optional
+    iswirda: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -131,26,-284
+                    max: -131,10,-277
+
+        rules:
+            leave-map: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'Why you hating on iswirda?' # optional
+    spurlex: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: 62,26,-270
+                    max: 62,10,-277
+
+        rules:
+            leave-map: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'Why you hating on Spurlex?' # optional
+novas:
+    red-nova-1:
+        name: 'Red Nova 1'
+        team: red
+        location: 3,79,-287
+        hits: 200
+    red-nova-2:
+        name: 'Red Nova 2'
+        team: red
+        location: 3,79,-267
+        hits: 200
+    blue-nova-1:
+        name: 'Blue Nova 1'
+        team: blue
+        location: -71,79,-266
+        hits: 200
+    blue-nova-2:
+        name: 'Blue Nova 2'
+        team: blue
+        location: -71,79,-286
+        hits: 200

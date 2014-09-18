@@ -1,0 +1,49 @@
+info:
+    name: 'Mountain of Legends'
+    gamemode: 'Spleef'
+    authors:
+    - 'Karler'
+    objective: "Destroy the snow to spleef the players" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: 501,28,-1931
+            radius: 2
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death
+    timelimit: 300  # game length in seconds
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        spawns:
+            spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 501,10,-1931
+                    radius: 10
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: 'default' #optional, corresponds to the serverside name
+
+kits:
+    default: #serverside name (not used in game)
+        name: "Kit!"
+        default: true # whether the kit is the default (default = false)
+        items:
+            0: #slot
+                item: diamond spade # material name
+                title: 'Spleef Shovel' # optional title - default: usual name

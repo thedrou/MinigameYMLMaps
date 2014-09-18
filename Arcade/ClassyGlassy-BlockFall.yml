@@ -1,0 +1,43 @@
+info:
+    name: 'Classy Glassy'
+    gamemode: 'blockfall'
+    authors:
+    - 'Spurlex'
+    - 'Tweeney'
+    objective: "Run from the falling blocks without getting squashed" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: 0,80,0
+            radius: 6
+            height: 3
+
+config:
+    forcerespawn: true # force respawn on death
+    timelimit: 300  # game length in seconds
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50  #optional - default = infinite
+        spawns:
+            players:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 0,66,0
+                    radius: 5
+                    height: 1
+
+arena:
+    cylinder:
+        base: 0,65,0
+        radius: 20
+        height: 0

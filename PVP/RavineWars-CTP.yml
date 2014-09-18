@@ -1,0 +1,241 @@
+info:
+    name: 'Ravine Wars'
+    gamemode: 'CTP'
+    authors:
+    - 'KittyKartel'
+    objective: "Capture the enemy team's points" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -187,112,-356
+            radius: 1
+            height: 3
+        yaw: 90 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1800  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 14000 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first:
+            xp: 10
+            gold: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective: #optional
+            gold: 5 #optional default 0
+            xp: 5 #optional default 0
+
+teams:
+    magenta:  # team name (not used in game)
+        name: 'Magenta Team'  # team name (shown in game)
+        color: dark purple # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -209,56,-399
+                    radius: 1
+                    height: 3
+                yaw: -40 # optional
+                pitch: 0 # optional
+                defaultkit: magenta #optional, corresponds to the serverside name
+    cyan:  # team name (not used in game)
+        name: 'Cyan Team'  # team name (shown in game)
+        color: dark aqua # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -165,56,-312
+                    radius: 1
+                    height: 3
+                yaw: 140 # optional
+                pitch: 0 # optional
+                defaultkit: cyan #optional, corresponds to the serverside name
+
+kits:
+    magenta: #serverside name (not used in game)
+        name: "Magenta Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            7:
+                item: cooked beef
+                amount: 32
+            8:
+                item: golden apple
+                amount: 5
+            19:
+                item: arrow
+                amount: 1
+            helmet:
+                item: iron helmet
+                enchantments:
+                - durability:3
+                - protection environmental:2
+            chestplate:
+                item: leather chestplate
+                color: 'AA00AA'
+                enchantments:
+                - durability:3
+                - protection environmental:2
+            leggings:
+                item: iron leggings
+                enchantments:
+                - durability:3
+                - protection environmental:2
+            boots:
+                item: leather boots
+                color: 'AA00AA'
+                enchantments:
+                - durability:3
+                - protection environmental:2
+    cyan: #serverside name (not used in game)
+        name: "Cyan Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            7:
+                item: cooked beef
+                amount: 32
+            8:
+                item: golden apple
+                amount: 5
+            19:
+                item: arrow
+                amount: 1
+            helmet:
+                item: iron helmet
+                enchantments:
+                - durability:3
+                - protection environmental:2
+            chestplate:
+                item: leather chestplate
+                color: '00AAAA'
+                enchantments:
+                - durability:3
+                - protection environmental:2
+            leggings:
+                item: iron leggings
+                enchantments:
+                - durability:3
+                - protection environmental:2
+            boots:
+                item: leather boots
+                color: '00AAAA'
+                enchantments:
+                - durability:3
+                - protection environmental:2
+points:
+    magenta-point-lower:
+        cuboid:
+            min: -195,36,-370
+            max: -193,38,-368
+        team: magenta
+        name: 'Magenta''s Bottom Point'
+
+    magenta-point-upper:
+        cuboid:
+            min: -174,55,-373
+            max: -172,56,-371
+        team: magenta
+        name: 'Magenta''s Top Point'
+    cyan-point-lower:
+        cuboid:
+            min: -181,36,-343
+            max: -179,38,-341
+        team: cyan
+        name: 'Cyan''s Bottom Point'
+
+    cyan-point-upper:
+        cuboid:
+            min: -202,54,-340
+            max: -200,56,-338
+        team: cyan
+        name: 'Cyan''s Top Point'
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -224,19,-419
+                    max: -150,116,-292
+        rules:
+            allow-lapis:
+                action: destroy
+                access: allow
+                material: lapis ore
+            allow-emerald:
+                action: destroy
+                access: allow
+                material: emerald ore
+            allow-redstone:
+                action: destroy
+                access: allow
+                material: redstone ore
+            allow-redstone-two:
+                action: destroy
+                access: allow
+                material: lit redstone ore
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'Where do you think you are going? Get back in the game!'
+            deny-build:
+                action: build
+                access: deny
+            deny-destroy:
+                action: destroy
+                access: deny
+    magenta-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -213,56,-406
+                    max: -185,58,-372
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: cyan # optional, default any team
+                message: 'You are not allowed in here, Turn around and go back!'
+            allow-gold:
+                action: destroy
+                access: allow
+                material: gold block
+            allow-diamond:
+                action: destroy
+                access: allow
+                material: diamond block
+    cyan-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -189,55,-339
+                    max: -161,61,-305
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: magenta # optional, default any team
+                message: 'You are not allowed in here, Turn around and go back!'
+            allow-gold:
+                action: destroy
+                access: allow
+                material: gold block
+            allow-diamond:
+                action: destroy
+                access: allow
+                material: diamond block

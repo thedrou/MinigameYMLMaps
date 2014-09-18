@@ -1,0 +1,53 @@
+info:
+    name: 'Saddle Up'
+    gamemode: 'VEHICLERACE'
+    authors:
+    - 'Spurlex'
+    - 'Popshooter'
+    objective: "Get to the finish line on your horse" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -633,27,548
+            radius: 1
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: false # force respawn on death
+    timelimit: 300  # game length in seconds
+    vehicle: horse
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50  #optional - default = infinite
+        spawns:
+            players1:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -648,11,525
+                    radius: 2
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                
+                
+startline:
+    cuboid:
+        min: -646,10,522
+        max: -641,15,570
+
+finishline:
+    cuboid:
+        min: -420,8,570
+        max: -419,16,523

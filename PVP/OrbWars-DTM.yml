@@ -1,0 +1,239 @@
+info:
+    name: 'Orb Wars'
+    gamemode: 'DTM'
+    authors:
+    - 'Water_Orb'
+    objective: "Break the enemy team's obsidian monument." #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -5,100,-13
+            radius: 1
+            height: 0
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1800  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 23000 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -4,48,-154
+                    radius: 1
+                    height: 3
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: red #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Blue Team'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -5,48,122
+                    radius: 1
+                    height: 0
+                yaw: 180 # optional
+                pitch: 0 # optional
+                defaultkit: blue #optional, corresponds to the serverside name
+
+kits:
+    red: #serverside name (not used in game)
+        name: "Red Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+            2:
+                item: diamond pickaxe
+            5:
+                item: wood
+                amount: 64
+            7:
+                item: golden apple
+                amount: 5
+            8:
+                item: cooked beef
+                amount: 32
+            10:
+                item: arrow
+                amount: 64
+            19:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'AA0000'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: chainmail leggings
+            boots:
+                item: leather boots
+                color: 'AA0000'
+
+    blue: #serverside name (not used in game)
+        name: "Blue Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+            2:
+                item: diamond pickaxe
+            5:
+                item: wood
+                amount: 64
+            7:
+                item: golden apple
+                amount: 5
+            8:
+                item: cooked beef
+                amount: 32
+            10:
+                item: arrow
+                amount: 64
+            19:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '0000AA'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: chainmail leggings
+            boots:
+                item: leather boots
+                color: '0000AA'
+
+monuments:
+    red-monument:
+        name: 'Monument'
+        cuboid:
+            min: -5,60,-90
+            max: -3,62,-88
+        team: red
+        material: obsidian
+    blue-monument:
+        name: 'Monument'
+        cuboid:
+            min: -6,60,56
+            max: -4,62,58
+        team: blue
+        material: obsidian
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -44,-1000,-167
+                    max: 34,70,134
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map!'
+    spectators:
+        areas:
+            base:
+                cuboid:
+                    min: -13,97,-24
+                    max: 5,116,-6
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spectator spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot modify the spectator spawn!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot modify the spectator spawn!'
+    red-spawn:
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -25,45,-161
+                    max: 17,60,-147
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn' # optional
+    blue-spawn:
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -27,47,116
+                    max: 15,60,129
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn' # optional
+    red-crafting:
+        areas:
+            base:
+                cuboid:
+                    min: -6,34,-127
+                    max: -2,35,-127
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                team: red
+                message: 'Do not break these, that is team griefing!' # optional
+    blue-crafting:
+        areas:
+            base:
+                cuboid:
+                    min: -7,24,95
+                    max: -3,35,95
+        rules:
+           deny-destroy:
+                action: destroy
+                access: deny
+                team: blue
+                message: 'Do not break these, that is team griefing!' # optional

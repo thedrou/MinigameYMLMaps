@@ -1,0 +1,137 @@
+info:
+    name: 'Chaos Town'
+    gamemode: 'KILLCONFIRMED'
+    authors:
+    - 'KittyKartel'
+    objective: "Kill other players and store the ghast tears that they drop in the ender chest to score" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -6,67,-56
+            radius: 2
+            height: 1
+        yaw: 90 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death
+    timelimit: 600  # game length in seconds
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: #optional
+            gold: 5 #optional default 0
+            xp: 2 #optional default 0
+        objective: #optional
+            gold: 3 #optional default 0
+            xp: 3 #optional default 0
+
+teams:
+    blue:
+        name: 'Blue Team'
+        color: blue
+        max: 100
+        spawns:
+            bluespawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 19,69,-111
+                    radius: 1
+                    height: 1
+                defaultkit: default
+            bluespawn2:
+                cylinder:
+                    base: -31,69,-111
+                    radius: 1
+                    height: 1
+                defaultkit: default
+    pink:
+        name: 'Pink Team'
+        color: light purple
+        max: 100
+        spawns:
+            pinkspawn:
+                cylinder:
+                    base: -31,69,6
+                    radius: 1
+                    height: 1
+                yaw: 180
+                defaultkit: default
+            pinkspawn2:
+                cylinder:
+                    base: 18,69,6
+                    radius: 1
+                    height: 1
+                yaw: 180
+                defaultkit: default
+
+
+kits:
+    default: #serverside name (not used in game)
+        name: "Default Kit"
+        items:
+            0:
+                item: iron sword
+            1:
+                item: bow
+            4:
+                item: cooked beef
+                amount: 64
+            5:
+                item: golden apple
+                amount: 5
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: iron helmet
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: iron boots
+        potions:
+        - heal,5,10 # effect,duration,amplifier amplifier optional
+        - damage resistance,10,10 # effect,duration,amplifier amplifier optional
+        - speed,5,2 # effect,duration,amplifier amplifier optional
+
+regions:
+    blue-spawn: # region name (not used in game)
+        areas:
+            left:
+                cuboid:
+                    min: 4,61,-116
+                    max: 32,100,-96
+            right: #area name  (not used in game)
+                cuboid:
+                    min: -48,59,-117
+                    max: -19,100,-96
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter-spawn: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: pink
+                message: 'You mat not enter Blue Team''s spawn.' # optional
+
+    red-spawn: # region name (not used in game)
+        areas:
+            left:
+                cuboid:
+                    min: -46,65,-11
+                    max: -18,100,10
+            right: #area name  (not used in game)
+                cuboid:
+                    min: 5,65,-11
+                    max: 34,100,12
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter-spawn: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue
+                message: 'You mat not enter Pink Team''s spawn.' # optional

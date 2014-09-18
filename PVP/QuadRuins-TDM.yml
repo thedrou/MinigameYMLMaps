@@ -1,0 +1,328 @@
+info:
+    name: 'Quad Ruins'
+    gamemode: 'TDM'
+    authors:
+    - 'Vertoner'
+    objective: "Be the team with most kills after 8 minutes." #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -11,50,59
+            radius: 1
+            height: 3
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 480  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 1200 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first:
+            xp: 10
+            gold: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Ruby Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -95,19,58
+                    radius: 1
+                    height: 3
+                yaw: -90 # optional
+                pitch: 0 # optional
+                defaultkit: red #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Sapphire Team'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 71,19,58
+                    radius: 1
+                    height: 3
+                yaw: 90 # optional
+                pitch: 0 # optional
+                defaultkit: blue #optional, corresponds to the serverside name
+
+    yellow:  # team name (not used in game)
+        name: 'Gold Team'  # team name (shown in game)
+        color: yellow # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -12,19,141
+                    radius: 1
+                    height: 3
+                yaw: 180 # optional
+                pitch: 0 # optional
+                defaultkit: yellow #optional, corresponds to the serverside name
+
+    green:  # team name (not used in game)
+        name: 'Emerald Team'  # team name (shown in game)
+        color: green # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -12,19,-25
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: green #optional, corresponds to the serverside name
+
+kits:
+    red: #serverside name (not used in game)
+        name: "Red Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            10:
+                item: arrow
+            2:
+                item: bread
+                amount: 16
+            3:
+                item: golden apple
+                amount: 5
+            helmet:
+                item: leather helmet
+                color: 'cd0000'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: 'cd0000'
+        potions:
+        - damage resistance,10,10
+        - speed,600,1
+    blue: #serverside name (not used in game)
+        name: "Blue Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            10:
+                item: arrow
+            2:
+                item: bread
+                amount: 16
+            3:
+                item: golden apple
+                amount: 5
+            helmet:
+                item: leather helmet
+                color: '0066cc'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: '0066cc'
+        potions:
+        - damage resistance,10,10
+        - speed,600,1
+
+    yellow: #serverside name (not used in game)
+        name: "Yellow Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            10:
+                item: arrow
+            2:
+                item: bread
+                amount: 16
+            3:
+                item: golden apple
+                amount: 5
+            helmet:
+                item: leather helmet
+                color: 'F2FF00'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: 'F2FF00'
+        potions:
+        - damage resistance,10,10
+        - speed,600,1
+
+    green: #serverside name (not used in game)
+        name: "Green Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            10:
+                item: arrow
+            2:
+                item: bread
+                amount: 16
+            3:
+                item: golden apple
+                amount: 5
+            helmet:
+                item: leather helmet
+                color: '0CFF0C'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: '0CFF0C'
+        potions:
+        - damage resistance,10,10
+        - speed,600,1
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -109,-1000,-36
+                    max: 81,70,154
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+            deny-build:
+                action: build
+                access: deny
+            deny-destroy:
+                action: destroy
+                access: deny
+    spectators:
+        areas:
+            base:
+                cuboid:
+                    min: -16,37,53
+                    max: -4,54,64
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You are not allowed to enter the spectators spawn!'
+            deny-build:
+                action: build
+                access: deny
+            deny-destroy:
+                action: destroy
+                access: deny
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -101,8,43
+                    max: -76,25,74
+        rules:
+            deny-blue: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+            deny-green: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: green # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+            deny-yellow: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: yellow # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+    blue-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: 51,7,41
+                    max: 78,26,77
+        rules:
+            deny-red: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+            deny-green: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: green # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+            deny-yellow: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: yellow # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+    yellow-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -28,5,122
+                    max: 4,27,150
+        rules:
+            deny-red: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Yellow Teams spawn'
+            deny-green: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: green # optional, default any team
+                message: 'You cannot enter Yellow Teams spawn'
+            deny-blue: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Yellow Teams spawn'
+    green-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -29,7,-34
+                    max: 4,23,-6
+        rules:
+            deny-red: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Green Teams spawn'
+            deny-yellow: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: yellow # optional, default any team
+                message: 'You cannot enter Green Teams spawn'
+            deny-blue: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Green Teams spawn'

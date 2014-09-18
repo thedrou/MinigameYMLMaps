@@ -1,0 +1,154 @@
+info:
+    name: 'Dragons Fire'
+    gamemode: 'CTP'
+    authors:
+    - 'Karler'
+    - 'Yumonix'
+    objective: "Capture the point of the enemy team by standing on the obsidian." #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -14,52,-51
+            radius: 1
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1800  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 1200 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective: #optional
+            gold: 5 #optional default 0
+            xp: 5 #optional default 0
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn-1:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 12,26,-100
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: kit #optional, corresponds to the serverside name
+            red-spawn-2:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -39,26,-101
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: kit #optional, corresponds to the serverside name
+    green:  # team name (not used in game)
+        name: 'Green Team'  # team name (shown in game)
+        color: green # optional - default = gray
+        max: 100
+        spawns:
+            green-spawn-1:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -40,26,-2
+                    radius: 1
+                    height: 1
+                yaw: 180 # optional
+                pitch: 0 # optional
+                defaultkit: kit #optional, corresponds to the serverside name
+            green-spawn-2:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 11,26,-2
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: kit #optional, corresponds to the serverside name
+
+kits:
+    kit: #serverside name (not used in game)
+        name: "Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            4:
+                item: cooked chicken
+                amount: 4
+            5:
+                item: golden apple
+                amout: 2
+            19:
+                item: arrow
+                amount: 1
+        potions:
+        - damage resistance,10,10
+
+points:
+    red-point:
+        cuboid:
+            min: -16,24,-68
+            max: -12,26,-64
+
+        team: red
+        name: "Red's Point"
+    green-point:
+        cuboid:
+            min: -16,24,-39
+            max: -12,26,-35
+        team: green
+        name: "Green's Point"
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                  min: 25,-10000,20
+                  max: -54,64,-124
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+    green-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -45,18,-14
+                    max: 20,39,8
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Green Teams spawn'
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -49,19,-109
+                    max: 21,32,-90
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: green # optional, default any team
+                message: 'You cannot enter Red Teams spawn'

@@ -1,0 +1,298 @@
+info:
+    name: 'Biome Mania'
+    gamemode: 'TDM'
+    authors:
+    - 'XxXbraydogXxX'
+    - 'SeanMe'
+    objective: "Kill the opponent teams" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -53,53,-1337
+            radius: 1
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 600  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 8000 # time that the world is frozen at default: world time cycles as usual
+    selectablekits: false # default = false
+    rewards:
+        kill: #optional
+            gold: 5 #optional default 0
+            xp: 2 #optional default 0
+        objective: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+
+teams:
+    blue:  # team name (not used in game)
+        name: 'Frosties'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -93,29,-1332
+                    radius: 1
+                    height: 1
+                yaw: -45 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    yellow:  # team name (not used in game)
+        name: 'TinkerBells'  # team name (shown in game)
+        color: yellow # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -64,12,-1291
+                    radius: 1
+                    height: 1
+                yaw: 90 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    red:  # team name (not used in game)
+        name: 'Shroomonians'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -18,30,-1288
+                    radius: 1
+                    height: 1
+                yaw: 135 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    darkgreen:  # team name (not used in game)
+        name: 'Tree Huggers'  # team name (shown in game)
+        color: dark green # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -11,32,-1318
+                    radius: 1
+                    height: 1
+                yaw: 90 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    darkaqua:  # team name (not used in game)
+        name: 'Derps'  # team name (shown in game)
+        color: dark aqua # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -7,28,-1368
+                    radius: 1
+                    height: 1
+                yaw: 45 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    gold:  # team name (not used in game)
+        name: 'Old Folks'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -11,30,-1386
+                    radius: 1
+                    height: 1
+                yaw: 90 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    lightpurple:  # team name (not used in game)
+        name: 'Hippies'  # team name (shown in game)
+        color: light purple # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -75,31.5,-1377
+                    radius: 1
+                    height: 1
+                yaw: -45 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    darkgray:  # team name (not used in game)
+        name: 'Mountaineers'  # team name (shown in game)
+        color: dark gray # optional - default = gray
+        max: 100  #optional - default = 50
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -98,25,-1359
+                    radius: 1
+                    height: 1
+                yaw: -20 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+
+kits:
+    spawn: #serverside name (not used in game)
+        name: "Kit!"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+            7:
+                item: golden apple
+                amount: 4
+            8:
+                item: cookie
+            28:
+                item: arrow
+                amount: 64
+            helmet: #helmet/chestplate/leggings/boots
+                item: gold helmet
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: chainmail leggings
+            boots:
+                item: diamond boots
+
+regions:
+    map: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -9108,-1000,-13902
+                    max: 9008,70,-127
+        rules:
+            deny-leave: # rule name (not used in game)
+                action: leave
+                access: deny
+                message: 'You cannot leave the map' # optional
+            deny-destroy:
+                action: destroy
+                access: deny
+            deny-build:
+                action: build
+                access: deny
+    hippies-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -77,29,-1379
+                    max: -73,34,-1375
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: blue, yellow, red, darkgreen, darkaqua, gold, darkgray
+                message: 'You cannot enter Hippie''s Spawn'
+    oldfolks-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -17,27,-1388
+                    max: -9,33,-1382
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: blue, yellow, red, darkgreen, darkaqua, lightpurple, darkgray
+                message: 'You cannot enter Old Folk''s Spawn'
+    derps-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -11,27,-1371
+                    max: -4,32,-1364
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: blue, yellow, red, darkgreen, gold, lightpurple, darkgray
+                message: 'You cannot enter Derps''s Spawn'
+    treehuggers-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -13,26,-1320
+                    max: -9,100,-1314
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: blue, yellow, red, darkaqua, gold, lightpurple, darkgray
+                message: 'You cannot enter Tree Hugger''s Spawn'
+    shroomonians-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -26,26,-1294
+                    max: -11,32,-1284
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: blue, yellow, darkgreen, darkaqua, gold, lightpurple, darkgray
+                message: 'You cannot enter Shroomonian''s Spawn'
+    tinkerbells-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -73,26,-1299
+                    max: -67,34,-1288
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: blue, red, darkgreen, darkaqua, gold, lightpurple, darkgray
+                message: 'You cannot enter Tinkerbell''s Spawn'
+    frosties-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -96,27,-1335
+                    max: -89,100,-1328
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: yellow, red, darkgreen, darkaqua, gold, lightpurple, darkgray
+                message: 'You cannot enter Frostie''s Spawn'
+    mountaineers-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -99,24,-1360
+                    max: -81,32,-1345
+        rules:
+            fight:
+                action: fight
+                access: deny
+            enter:
+                action: enter
+                access: deny
+                team: yellow, red, darkgreen, darkaqua, gold, lightpurple, blue
+                message: 'You cannot enter Mountaineer''s Spawn'

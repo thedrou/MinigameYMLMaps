@@ -1,0 +1,49 @@
+info:
+    name: 'Float n Rock'
+    gamemode: 'VEHICLERACE'
+    authors:
+    - 'FuzzNuggettt'
+    - 'DolanStahp'
+    objective: "Race your boat to the finish line" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -160,74,-501
+            radius: 2
+            height: 1
+        yaw: -90 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: false # force respawn on death
+    timelimit: 300  # game length in seconds
+    vehicle: boat
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    spectator:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50  #optional - default = infinite
+        spawns:
+            spawn:  # spawn name (not used in game)
+                cuboid:  # cylinder or cuboid
+                    min: -153,50,-495
+                    max: -136,50,-495
+
+startline:
+    cuboid:
+        min: -156,51,-495
+        max: -134,55,-494
+
+finishline:
+    cuboid: 
+        min: -223,48,-575
+        max: -229,58,-598

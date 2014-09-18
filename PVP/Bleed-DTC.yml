@@ -1,0 +1,255 @@
+info:
+    name: 'Bleed'
+    gamemode: 'DTC'
+    authors:
+    - '911chandler'
+    - 'Nadastorm'
+    objective: "Destroy the enemy team's core in the center of their spawn" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -1233,95,-672
+            radius: 1
+            height: 1
+        yaw: 90 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1800  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 1200 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+        kill: #optional
+            gold: 5 #optional default 0
+            xp: 2 #optional default 0
+        objective: #optional
+            gold: 5 #optional default 0
+            xp: 5 #optional default 0
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -1167,74,-792
+                    radius: 1
+                    height: 3
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Blue Team'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -1152,74,-558
+                    radius: 1
+                    height: 3
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: spawn #optional, corresponds to the serverside name
+
+kits:
+    spawn: #serverside name (not used in game)
+        name: "Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+                enchantment:
+                - dig speed,7
+            2:
+                item: iron pickaxe
+                enchantment:
+                - durability,3
+            3:
+                item: log
+                amount: 64
+            4:
+                item: glass
+                amount: 64
+            5:
+                item: golden apple
+                amount: 2
+            8:
+                item: cooked chicken
+                amount: 64
+            19:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+
+cores:
+    mindistance: 6
+    material: obsidian
+
+    red-core:
+        cuboid:
+            min: -1169,82,-753
+            max: -1158,95,-745
+        name: "Red Core"
+        team: red
+    blue-core:
+        cuboid:
+            min: -1161,82,-605
+            max: -1151,95,-596
+        name: "Blue Core"
+        team: blue
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -1121,-90000,-548
+                    max: -1199,150,-804
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+    red-exit:
+        areas:
+            base:
+                cuboid:
+                    min: -1167,70,-777
+                    max: -1160,77,-762
+        rules:
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build here' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy here' # optional
+            deny-flow:  # rule name (not used in game)
+                action: flow
+                access: deny
+            deny-explode:  # rule name (not used in game)
+                action: explode
+                access: deny
+    blue-exit:
+        areas:
+            base:
+                cuboid:
+                    min: -1161,70,-588
+                    max: -1154,77,-575
+        rules:
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build here' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy here' # optional
+            deny-flow:  # rule name (not used in game)
+                action: flow
+                access: deny
+            deny-explode:  # rule name (not used in game)
+                action: explode
+                access: deny
+    blue-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -1186,44,-576
+                    max: -1135,111,-548
+        rules:
+            allow-destroy:  # rule name (not used in game)
+                action: destroy
+                access: allow
+                material: diamond block
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn' # optional
+            deny-flow:  # rule name (not used in game)
+                action: flow
+                access: deny
+            deny-explode:  # rule name (not used in game)
+                action: explode
+                access: deny
+            deny-fight:  # rule name (not used in game)
+                action: fight
+                access: deny
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -1186,44,-804
+                    max: -1133,111,-776
+        rules:
+            allow-destroy:  # rule name (not used in game)
+                action: destroy
+                access: allow
+                material: diamond block
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn' # optional
+            deny-flow:  # rule name (not used in game)
+                action: flow
+                access: deny
+            deny-explode:  # rule name (not used in game)
+                action: explode
+                access: deny
+            deny-fight:  # rule name (not used in game)
+                action: fight
+                access: deny
+    blue-core:
+        areas:
+            base:
+                cuboid:
+                    min: -1151,95,-596
+                    max: -1161,82,-605
+        rules:
+            deny-build:
+                action: build
+                access: deny
+                team: blue
+                material: obsidian
+                message: 'You cannot break your own core' # optional
+    red-core:
+        areas:
+            base:
+                cuboid:
+                    min: -1169,95,-753
+                    max: -1158,82,-745
+        rules:
+            deny-build:
+                action: build
+                access: deny
+                team: red
+                material: obsidian
+                message: 'You cannot break your own core' # optional

@@ -1,0 +1,356 @@
+info:
+    name: 'Devils Game'
+    gamemode: 'DTM'
+    authors:
+    - 'Karler'
+    - 'FuzzNuggettt'
+    objective: "Destroy the other team's two monuments to win the game!"
+    spawn:
+        cylinder:
+            base: -42,94,67
+            radius: 2
+            height: 1
+        yaw: -90
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+    deathmessages: true
+    frozentime: 2400
+    selectablekits: false
+    rewards:
+        kill:
+            gold: 5
+            xp: 5
+        objective:
+            gold: 10
+            xp: 10
+        first:
+            gold: 10
+            xp: 10
+        second:
+            gold: 5
+            xp: 5
+
+teams:
+    red:
+        name: 'Red Team'
+        color: dark red
+        max: 100
+        spawns:
+            redspawn:
+                cylinder:
+                    base: -40,52,139
+                    radius: 2
+                    height: 1
+                yaw: 180
+                pitch: 0
+                defaultkit: 'redkit'   
+    green:
+        name: 'Green Team'
+        color: dark green
+        max: 100
+        spawns:
+            bluespawn:
+                cylinder:
+                    base: -43,53,-4
+                    radius: 2
+                    height: 1
+                yaw: 0
+                pitch: 0
+                defaultkit: 'greenkit'
+
+kits:
+    redkit:
+        name: "Red Team Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: diamond pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: wood
+                amount: 64
+            5:
+                item: glass
+                amount: 64
+            8:
+                item: golden apple
+                amount: 5
+            7:
+                item: cooked beef
+                amount: 64
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FF0000'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: iron boots
+ 
+    greenkit:
+        name: "Green Team Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: diamond pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: wood
+                amount: 64
+            5:
+                item: glass
+                amount: 64
+            8:
+                item: golden apple
+                amount: 5
+            7:
+                item: cooked beef
+                amount: 64
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '00CC00'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: iron boots
+
+regions:
+    spawnplatform:
+        areas:
+            platform:
+                cuboid:
+                    min: -48,86,62
+                    max: -37,102,73
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spawn platform!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the spawn platform!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn platform!'
+                
+    redspawnbuilding:
+        areas:
+            redspawn:
+                cuboid:
+                    min: -30,69,143
+                    max: -53,46,126
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: green
+                message: 'You cannot enter reds spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    redspawnenterance:
+        areas:
+            redspawnenterance:
+                cuboid:
+                    min: -37,45,120
+                    max: -44,53,127
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: green
+                message: 'You cannot enter reds spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    redspawnenteranceprot:
+        areas:
+            redspawnenteranceprot:
+                cuboid:
+                    min: -36,52,122
+                    max: -46,45,116
+        rules:
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    greenspawnbuilding:
+        areas:
+            greenspawn:
+                cuboid:
+                    min: -55,69,-9
+                    max: -32,46,8
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: red
+                message: 'You cannot enter greens spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    greenspawnenterance:
+        areas:
+            greenspawnenterance:
+                cuboid:
+                    min: -47,45,14
+                    max: -41,53,7
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: red
+                message: 'You cannot enter greens spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    greenspawnenteranceprot:
+        areas:
+            greenspawnenteranceprot:
+                cuboid:
+                    min: -49,52,12
+                    max: -39,45,18
+        rules:
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                  
+    redmonuments:
+        areas:
+            redmonumentleft:
+                cuboid:
+                    min: -31,63,118
+                    max: -29,67,116
+            redmonumentright:
+                cuboid:
+                    min: -55,63,118
+                    max: -53,67,116
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                team: red
+                material: obsidian
+                message: 'You cannot destroy your own monument!'
+                
+    greenmonuments:
+        areas:
+            greenmonumentleft:
+                cuboid:
+                    min: -54,63,16
+                    max: -56,67,18
+            greenmonumentright:
+                cuboid:
+                    min: -30,63,16
+                    max: -32,67,18
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                team: green
+                material: obsidian
+                message: 'You cannot destroy your own monument!'
+                
+monuments:
+    red-monument-one:
+        name: 'Monument One'
+        team: red
+        material: obsidian
+        cuboid:
+            min: -31,63,118
+            max: -29,67,116
+    red-monument-two:
+        name: 'Monument Two'
+        team: red
+        material: obsidian
+        cuboid:
+            min: -55,63,118
+            max: -53,67,116
+    green-monument-one:
+        name: 'Monument One'
+        team: green
+        material: obsidian
+        cuboid:
+            min: -54,63,16
+            max: -56,67,18
+    green-monument-two:
+        name: 'Monument Two'
+        team: green
+        material: obsidian
+        cuboid:
+            min: -30,63,16
+            max: -32,67,18

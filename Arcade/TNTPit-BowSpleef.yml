@@ -1,0 +1,54 @@
+info:
+    name: 'TNT Pit'
+    gamemode: 'BOWSPLEEF'
+    authors:
+    - 'Spurlex'
+    objective: "Spleef other players by shooting arrows at the block below them" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: 99,15,-51
+            radius: 1
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: false # force respawn on death
+    timelimit: 300  # game length in seconds
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50  #optional - default = infinite
+        spawns:
+            players1:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 80,4,-52
+                    radius: 5
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: default
+
+kits:
+    default:
+        items:
+            0:
+                item: bow
+                enchantments:
+                - arrow fire:1
+                - arrow infinite:1
+            9: 
+                item: arrow
+                enchantments:
+                - arrow fire:1

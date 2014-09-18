@@ -1,0 +1,46 @@
+info:
+    name: 'Barnyard'
+    gamemode: 'sheepshear'
+    authors:
+    - 'Spurlex'
+    - 'Tweeney'
+    objective: "Shear as many sheep as you can within the time limit" #optional
+    spawn: # default spawn
+        cuboid: # cylinder or cuboid
+            min: -29, 67, 5
+            max: 13, 67, 28
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 120  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 0 # time that the world is frozen at default: world time cycles as usual
+    selectablekits: false # default = false
+    deathdrops: false #default = true
+
+teams:
+    players:  # team name (not used in game)
+        name: 'Players'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 30  #optional - default = 50
+        spawns:
+            player1:  # spawn name (not used in game)
+                cuboid: # cylinder or cuboid
+                    min: -29, 67, 5
+                    max: 13, 67, 28
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: 'default' #optional, corresponds to the serverside name
+
+kits:
+    default: #serverside name (not used in game)
+        name: "Kit!"
+        default: true #only if selectable kits active. default = false
+        items:
+            0: #slot
+                item: shears # material name
+
+arena:
+    cuboid: # cylinder or cuboid
+        min: -29, 67, 5
+        max: 13, 67, 28

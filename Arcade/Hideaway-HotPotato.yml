@@ -1,0 +1,34 @@
+info:
+    name: 'Hideaway'
+    gamemode: 'hotpotato'
+    authors:
+    - 'Spurlex'
+    - 'Tweeney'
+    objective: "Get rid of the potato by hitting other players. Don't let it explode on you!" #optional
+    spawn: # default spawn
+        cuboid: # cylinder or cuboid
+            min: -54, 143, 52
+            max: 13, 67, 28
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1600  # game length in seconds
+    deathmessages: false # show death messages in game default: true
+    frozentime: 0 # time that the world is frozen at default: world time cycles as usual
+    selectablekits: false # default = false
+    deathdrops: false #default = true
+
+teams:
+    players:  # team name (not used in game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 30  #optional - default = 50
+        spawns:
+            player1:  # spawn name (not used in game)
+                cylinder: # cylinder or cuboid
+                    base: -58, 114, 93
+                    height: 1
+                    radius: 5
+                yaw: 0 # optional
+                pitch: 0 # optional
+

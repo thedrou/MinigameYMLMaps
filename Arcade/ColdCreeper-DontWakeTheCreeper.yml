@@ -1,0 +1,45 @@
+info:
+    name: 'Cold Creeper'
+    gamemode: 'DWTC'
+    authors:
+    - 'HowToHayden'
+    - 'Popshooter'
+    objective: "Run on green, Slow on yellow, STOP on red!" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: 25,112,79
+            radius: 1
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: false # force respawn on death
+    timelimit: 300  # game length in seconds
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50  #optional - default = infinite
+        spawns:
+            players1:  # spawn name (not used in game)
+                cuboid:  # cylinder or cuboid
+                    min: -17,77,65
+                    max: -15,77,91
+                yaw: -90 # optional
+                pitch: 0 # optional
+                
+finishline:
+    cuboid:
+        min: 66,71,66
+        max: 68,71,92

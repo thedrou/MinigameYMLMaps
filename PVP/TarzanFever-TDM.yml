@@ -1,0 +1,205 @@
+info:
+    name: 'Tarzan Fever'
+    gamemode: 'TDM'
+    authors:
+    - '_AlexM'
+    objective: "Be the team with most kills after 8 minutes." #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -30,45,-3
+            radius: 1
+            height: 0
+        yaw: 90 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 480  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 1200 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 0,36,-51
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: red #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Blue Team'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 27,36,43
+                    radius: 1
+                    height: 1
+                yaw: 90 # optional
+                pitch: 0 # optional
+                defaultkit: blue #optional, corresponds to the serverside name
+
+kits:
+    red: #serverside name (not used in game)
+        name: "Red Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: stone pickaxe
+                enchantments:
+                - dig speed:3
+            3:
+                item: stone
+                amount: 16
+            4:
+                item: cooked beef
+                amount: 8
+            5:
+                item: golden apple
+                amount: 2
+            6:
+                item: shears
+                enchantments:
+                - dig speed:3
+            28:
+                item: arrow
+                amount: 1
+            helmet:
+                item: leather helmet
+                color: 'FF0000'
+            chestplate:
+                item: leather chestplate
+                color: 'FF0000'
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: 'FF0000'
+        potions:
+        - heal,5,10
+        - damage resistance,10,10
+        - speed,15,3
+    blue: #serverside name (not used in game)
+        name: "Blue Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: stone pickaxe
+                enchantments:
+                - dig speed:3
+            3:
+                item: stone
+                amount: 16
+            4:
+                item: cooked beef
+                amount: 8
+            5:
+                item: golden apple
+                amount: 2
+            6:
+                item: shears
+                enchantments:
+                - dig speed:3
+            28:
+                item: arrow
+                amount: 1
+            helmet:
+                item: leather helmet
+                color: '0000FF'
+            chestplate:
+                item: leather chestplate
+                color: '0000FF'
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: '0000FF'
+        potions:
+        - heal,5,10
+        - damage resistance,10,10
+        - speed,15,3
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -18,-900,-65
+                    max: 45,70,60
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -5,36,-55
+                    max: 1,43,-47
+        rules:
+            deny-blue: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy here' # optional
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build here' # optional
+            deny-fight: # rule name (not used in game)
+                action: fight
+                access: deny
+                message: 'You cannot fight here' # optional
+    blue-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: 33,36,47
+                    max: 26,43,39
+        rules:
+            deny-red: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy here' # optional
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build here' # optional
+            deny-fight: # rule name (not used in game)
+                action: fight
+                access: deny
+                message: 'You cannot fight here' # optional

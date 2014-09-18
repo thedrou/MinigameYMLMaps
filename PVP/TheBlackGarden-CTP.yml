@@ -1,0 +1,215 @@
+info:
+    name: 'The Black Garden'
+    gamemode: 'CTP'
+    authors:
+    - 'ktongminecraft'
+    objective: "Capture the enemy team's points" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -176,38,-1
+            radius: 1
+            height: 3
+        yaw: 90 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1800  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 14000 # time that the world is frozen at default: world time cycles as usual
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective: #optional
+            gold: 5 #optional default 0
+            xp: 5 #optional default 0
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -88,22,-61
+                    radius: 1
+                    height: 3
+                yaw: -40 # optional
+                pitch: 0 # optional
+                defaultkit: red #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Blue Team'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -88,22,59
+                    radius: 1
+                    height: 3
+                yaw: 180 # optional
+                pitch: 0 # optional
+                defaultkit: blue #optional, corresponds to the serverside name
+
+kits:
+    red: #serverside name (not used in game)
+        name: "Red Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+                enchantments:
+                - durability:3
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            7:
+                item: cooked chicken
+                amount: 16
+            8:
+                item: golden apple
+                amount: 3
+            19:
+                item: arrow
+                amount: 1
+            helmet:
+                item: leather helmet
+                color: 'FF0000'
+            chestplate:
+                item: chainmail chestplate
+                enchantments:
+                - protection environmental:2
+            leggings:
+                item: chainmail leggings
+            boots:
+                item: chainmail boots
+                enchantments:
+                - protection environmental:2
+    blue: #serverside name (not used in game)
+        name: "Blue Kit"
+        items:
+            0: #slot
+                item: stone sword # material name
+                enchantments:
+                - durability:3
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            7:
+                item: cooked chicken
+                amount: 16
+            8:
+                item: golden apple
+                amount: 3
+            19:
+                item: arrow
+                amount: 1
+            helmet:
+                item: leather helmet
+                color: '0000FF'
+            chestplate:
+                item: chainmail chestplate
+                enchantments:
+                - protection environmental:2
+            leggings:
+                item: chainmail leggings
+            boots:
+                item: chainmail boots
+                enchantments:
+                - protection environmental:2
+points:
+    red-point-left:
+        cuboid:
+            min: -33,3,-47
+            max: -27,9,-41
+        team: red
+        name: 'Red''s Left Point'
+
+    red-point-right:
+        cuboid:
+            min: -148,3,-47
+            max: -143,9,-41
+        team: red
+        name: 'Red''s Right Point'
+    blue-point-left:
+        cuboid:
+            min: -149,3,39
+            max: -143,9,41
+        team: blue
+        name: 'Blue''s Left Point'
+
+    blue-point-right:
+        cuboid:
+            min: -31,3,41
+            max: -29,9,43
+        team: blue
+        name: 'Blue''s Right Point'
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -192,-1000,71
+                    max: 22,1000,-78
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'Where do you think you are going? Get back in the game!'
+            allow-fence:
+                action: destroy
+                access: allow
+                material: fence
+            allow-yellow-flower:
+                action: destroy
+                access: allow
+                material: yellow flower
+            allow-red-flower:
+                action: destroy
+                access: allow
+                material: red rose
+            allow-sugar-cane:
+                action: destroy
+                access: allow
+                material: sugar cane
+            allow-long-grass:
+                action: destroy
+                access: allow
+                material: long grass
+            deny-build:
+                action: build
+                access: deny
+            deny-destroy:
+                action: destroy
+                access: deny
+    red-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -105,0,-79
+                    max: -70,50,-42
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: blue
+                message: 'You cannot enter the other teams spawn!'
+    blue-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: -105,0,37
+                    max: -71,50,73
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: red
+                message: 'You cannot enter the other teams spawn!'

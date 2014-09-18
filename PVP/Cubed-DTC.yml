@@ -1,0 +1,250 @@
+info:
+    name: 'Cubed'
+    gamemode: 'DTC'
+    authors:
+    - 'Herobrinekillerz'
+    - 'Hazy1219'
+    - 'FuzzNuggettt'
+    objective: "Destroy the other team's core to win the game!"
+    spawn:
+        cylinder:
+            base: -98,133,222
+            radius: 2
+            height: 1
+        yaw: 90
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+    deathmessages: true
+    frozentime: 1200
+    selectablekits: false
+    rewards:
+        kill:
+            gold: 5
+            xp: 5
+        first:
+            gold: 10
+            xp: 10
+        second:
+            gold: 5
+            xp: 5
+        objective:
+            gold: 50
+            xp: 50
+
+teams:
+    orange:
+        name: 'Orange Team'
+        color: gold
+        max: 100
+        spawns:
+            orangespawn:
+                cylinder:
+                    base: -15,67,222
+                    radius: 2
+                    height: 1
+                yaw: 90
+                pitch: 0
+                defaultkit: 'orangekit'   
+    purple:
+        name: 'Purple Team'
+        color: dark purple
+        max: 100
+        spawns:
+            purplespawn:
+                cylinder:
+                    base: -181,67,220
+                    radius: 2
+                    height: 1
+                yaw: -90
+                pitch: 0
+                defaultkit: 'purplekit'
+
+kits:
+    orangekit:
+        name: "Orange Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: diamond pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: wood
+                amount: 64
+            5:
+                item: glass
+                amount: 64
+            8:
+                item: golden apple
+                amount: 5
+            7:
+                item: cooked beef
+                amount: 64
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FFAA00'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: iron boots
+ 
+    purplekit:
+        name: "Purple Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: diamond pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: wood
+                amount: 64
+            5:
+                item: glass
+                amount: 64
+            8:
+                item: golden apple
+                amount: 5
+            7:
+                item: cooked beef
+                amount: 64
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'AA00AA'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: iron boots
+
+regions:
+    spawnplatform:
+        areas:
+            base:
+                cuboid:
+                    min: -108,123,213
+                    max: -90,134,231
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spawn platform!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the spawn platform!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn platform!'
+                
+    orangespawnbuilding:
+        areas:
+            base:
+                cuboid:
+                    min: -27,64,198
+                    max: -10,79,245
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: purple
+                message: 'You cannot enter oranges spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+            deny-fight:
+                action: fight
+                access: deny
+                
+    purplespawnbuilding:
+        areas:
+            base:
+                cuboid:
+                    min: -170,62,244
+                    max: -188,79,197
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: orange
+                message: 'You cannot enter purples spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+            deny-fight:
+                action: fight
+                access: deny
+
+    waterflow:
+        areas:
+            base:
+                cuboid:
+                    min: -122,62,181
+                    max: -76,63,261
+        rules:
+            deny-flow:
+                action: flow
+                access: deny
+
+cores:
+    mindistance: 4
+    material: obsidian
+    purplecore:
+        cuboid:
+            min: -215,104,219
+            max: -212,108,222
+        name: "Purple Core"
+        team: purple
+    orangecore:
+        cuboid:
+            min: 14,104,220
+            max: 17,107,223
+        name: "Orange Core"
+        team: orange

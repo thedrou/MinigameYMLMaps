@@ -1,0 +1,376 @@
+info:
+    name: 'Desert Run'
+    gamemode: 'ctw'
+    authors:
+    - 'Vertalli'
+    - 'Spurlex'
+    objective: "Get the wool from the wool room and place in your wool monument"
+    spawn: # default spawn
+        cylinder:
+            base: -2,35,-9
+            radius: 2
+            height: 1
+        yaw: 270
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective:
+            gold: 10
+            xp: 10
+
+teams:
+    red:
+        name: 'Red Team'  # team name (shown in game)
+        color: red # optional - default = gray
+        max: 100  #optional - default = infinite
+        spawns:
+            redspawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -51,31,61
+                    radius: 1
+                    height: 1
+                defaultkit: 'spawnred'
+    blue:
+        name: 'Blue Team'  # team name (shown in game)
+        color: blue
+        max: 100
+        spawns:
+            redspawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -50,31,-78
+                    radius: 1
+                    height: 1
+                defaultkit: 'spawnblue'
+
+kits:
+    spawnred:
+        name: "Red Team Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: iron pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: log
+                amount: 64
+            8:
+                item: golden apple
+                amount: 3
+            7:
+                item: cooked chicken
+                amount: 16
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'ff0000'
+                damage: -3000
+            chestplate:
+                item: leather chestplate
+                color: 'ff0000'
+                damage: -3000
+            leggings:
+                item: leather leggings
+                color: 'ff0000'
+                damage: -3000
+            boots:
+                item: leather boots
+                color: 'ff0000'
+                damage: -3000
+
+    spawnblue:
+        name: "Blue Team Kit"
+        default: true
+        selectable: false
+        items:
+            0:
+                item: iron sword
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: iron pickaxe
+                enchantments:
+                - durability:3
+            4:
+                item: log
+                amount: 64
+            8:
+                item: golden apple
+                amount: 3
+            7:
+                item: cooked chicken
+                amount: 16
+            27:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '0000ff'
+                damage: -3000
+            chestplate:
+                item: leather chestplate
+                color: '0000ff'
+                damage: -3000
+            leggings:
+                item: leather leggings
+                color: '0000ff'
+                damage: -3000
+            boots:
+                item: leather boots
+                color: '0000ff'
+                damage: -3000
+
+
+regions:
+    blue-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -44,21,-75
+                    max: -58,44,-88
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter this region' # optional
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -58,21,58
+                    max: -44,44,71
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter this region' # optional
+                material: gold block #optional
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    blue-capture: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -31,34,-75
+                    max: -71,26,-88
+        rules:
+            allow-build-wool: # rule name (not used in game)
+                action: build
+                access: allow
+                team: blue # optional, default any team
+                material: wool
+
+            allow-destroy-wool: # rule name (not used in game)
+                action: destroy
+                access: allow
+                team: blue # optional, default any team
+                material: wool
+
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+
+    red-capture: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -31,27,71
+                    max: -71,35,58
+        rules:
+            allow-build-wool: # rule name (not used in game)
+                action: build
+                access: allow
+                team: red # optional, default any team
+                material: wool
+
+            allow-destroy-wool: # rule name (not used in game)
+                action: destroy
+                access: allow
+                team: red # optional, default any team
+                material: wool
+
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+
+    blue-box: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -93,19,-152
+                    max: -9,34,-168
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter this region' # optional
+                material: gold block #optional
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    red-box: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -9,19,135
+                    max: -93,34,151
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter this region' # optional
+                material: gold block #optional
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    red-no-build: # region name (not used in game)
+        areas:
+            base: #area ne  (not used in game)
+                cuboid:
+                    min: -56,0,90
+                    max: -47,256,172
+        rules:
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    blue-no-build: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -56,0,-189
+                    max: -47,256,-107
+        rules:
+            deny-build: # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build' # optional
+            deny-destroy: # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy' # optional
+
+    map: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -112,-500,171
+                    max: 11,100,-188
+        rules:
+            deny-leave: # rule name (not used in game)
+                action: leave
+                access: deny
+                message: 'You cannot leave the map' # optional
+    spawnplatform:
+        areas:
+            platform:
+                cuboid:
+                    min: 6,44,-1
+                    max: -10,30,-16
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spawn platform!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the spawn platform!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn platform!'
+
+wools:
+    blue-red:
+        name: 'Red Wool'
+        team: blue
+        color: red
+        location: -39,30,-82
+    blue-white:
+        name: 'White Wool'
+        team: blue
+        color: white
+        location: -64,30,-82
+    red-blue:
+        name: 'Blue Wool'
+        team: red
+        color: blue
+        location: -64,30,64
+    red-black:
+        name: 'Black Wool'
+        team: red
+        color: black
+        location: -39,30,64

@@ -1,0 +1,142 @@
+info:
+    name: 'Red vs Blue'
+    gamemode: 'CTP'
+    authors:
+    - 'Spurlex'
+    objective: "Capture the point of the enemy team by standing on the obsidian." #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -333,63,1944
+            radius: 1
+            height: 1
+
+config:
+    forcerespawn: true # force respawn on death
+    timelimit: 1800  # game length in seconds
+    damagetime: 5 #seconds for point to be damaged
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective:
+            gold: 10
+            xp: 10
+
+teams:
+    red:  # team name (not use din game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100  #optional - default = infinite
+        spawns:
+            redspawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -333,14,2012
+                    radius: 1
+                    height: 1
+                defaultkit: default
+
+    blue:
+        name: 'Blue Team'
+        color: blue
+        max: 100
+        spawns:
+            bluespawn:
+                cylinder:
+                    base: -333,14,1878
+                    radius: 1
+                    height: 0
+                defaultkit: default
+
+kits:
+    default:
+        name: "Default Kit"
+        default: true
+        selectable: false
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            2:
+                item: iron pickaxe
+                damage: 247
+            4:
+                item: cooked chicken
+                amount: 4
+            5:
+                item: golden apple
+                amount: 2
+            28:
+                item: arrow
+                amount: 1
+
+        potions:
+        - damage resistance,10,10
+
+regions:
+    map: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -30000,-1000,-18740
+                    max: 300,9000,30005
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the map'
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the map'
+    blue-spawn:
+        areas:
+            spawn:
+                cuboid:
+                    min: -336,14,1876
+                    max: -331,15,1881
+
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the other team''s spawn!'
+                team: red
+
+    red-spawn:
+        areas:
+            spawn:
+                cuboid:
+                    min: -336,14,2009
+                    max: -331,15,2013
+
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the other team''s spawn!'
+                team: blue
+
+points:
+    red-point:
+        cuboid:
+            min: -337,30,1999
+            max: -329,33,2007
+        team: red
+        name: 'Red''s Point'
+
+    blue-point:
+        cuboid:
+            min: -337,30,1883
+            max: -329,33,1891
+        team: blue
+        name: 'Blue''s Point'

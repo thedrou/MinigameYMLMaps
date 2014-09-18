@@ -1,0 +1,261 @@
+info:
+    name: 'Siege'
+    gamemode: 'DTC'
+    authors:
+    - 'TheMuffinMan156'
+    - 'Ben_theEnderman'
+    objective: "Destroy the enemy team's core in the center of their spawn" #optional
+    spawn:
+        cylinder:
+            base: 1074,69,-1135
+            radius: 1
+            height: 1
+        yaw: 0
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+    deathmessages: true
+    frozentime: 1200
+    rewards:
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective:
+            gold: 10
+            xp: 10
+
+teams:
+    green:
+        name: 'Green Team'
+        color: dark green
+        max: 100
+        spawns:
+            green-spawn:
+                cylinder:
+                    base: 1111,34,-1042
+                    radius: 1
+                    height: 1
+                yaw: 135
+                pitch: 0
+                defaultkit: green-kit
+    orange:
+        name: 'Orange Team'
+        color: gold
+        max: 100
+        spawns:
+            green-spawn:
+                cylinder:
+                    base: 984,34,-1169
+                    radius: 1
+                    height: 1
+                yaw: -45
+                pitch: 0
+                defaultkit: orange-kit
+
+kits:
+    green-kit:
+        name: "Green Kit"
+        items:
+            0:
+                item: iron sword
+            1:
+                item: bow
+            2:
+                item: iron pickaxe
+            3:
+                item: log
+                amount: 64
+            4:
+                item: glass
+                amount: 64
+            5:
+                item: golden apple
+                amount: 5
+            8: 
+                item: cooked chicken
+                amount: 64
+            19:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '00AA00'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: leather leggings
+                color: '00AA00'
+            boots:
+                item: iron boots
+    orange-kit:
+        name: "Orange Kit"
+        items:
+            0:
+                item: iron sword
+            1:
+                item: bow
+            2:
+                item: iron pickaxe
+            3:
+                item: log
+                amount: 64
+            4:
+                item: glass
+                amount: 64
+            5:
+                item: golden apple
+                amount: 5
+            8: 
+                item: cooked chicken
+                amount: 64
+            19:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FFAA00'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: leather leggings
+                color: 'FFAA00'
+            boots:
+                item: iron boots
+
+cores:
+    mindistance: 6
+    material: obsidian
+    green-core:
+        cuboid:
+            min: 1069,36,-1084
+            max: 1077,44,-1077
+        name: "Green Core"
+        team: green
+    orange-core:
+        cuboid:
+            min: 1018,36,-1135
+            max: 1026,44,-1128
+        name: "Orange Core"
+        team: orange
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: 976,-1000,-1177
+                    max: 1120,100,-1033
+        rules:
+            leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+    spectator:
+        areas:
+            base:
+                cuboid:
+                    min: 1079,60,-1140
+                    max: 1069,73,-1130
+        rules:
+            enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spectators spawn'
+            build:
+                action: build
+                access: deny
+                message: 'You cannot modify the spectators spawn'
+            destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot modify the spectators spawn'
+    green-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: 1097,13,-1056
+                    max: 1115,40,-1038
+        rules:
+            destroy-diamond:
+                action: destroy
+                access: allow
+                material: diamond block
+            destroy-iron:
+                action: destroy
+                access: allow
+                material: iron block
+            enter:
+                action: enter
+                access: deny
+                team: orange
+                message: 'You cannot enter spawn'
+            build:
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn'
+            destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn'
+    orange-spawn:
+        areas:
+            base:
+                cuboid:
+                    min: 981,13,-1172
+                    max: 998,40,-1155
+        rules:
+            destroy-diamond:
+                action: destroy
+                access: allow
+                material: diamond block
+            destroy-iron:
+                action: destroy
+                access: allow
+                material: iron block
+            enter:
+                action: enter
+                access: deny
+                team: green
+                message: 'You cannot enter spawn'
+            build:
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn'
+            destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn'
+    green-core:
+        areas:
+            base:    
+                cuboid:
+                    min: 1069,36,-1084
+                    max: 1077,44,-1077
+        rules:
+            destroy: 
+                action: destroy
+                access: deny
+                team: green
+                material: obsidian
+                message: 'You cannot destroy your own core'
+    orange-core:
+        areas:
+            base:  
+                cuboid:
+                    min: 1018,36,-1135
+                    max: 1026,44,-1128
+        rules:
+            destroy: 
+                action: destroy
+                access: deny
+                team: orange
+                material: obsidian
+                message: 'You cannot destroy your own core'

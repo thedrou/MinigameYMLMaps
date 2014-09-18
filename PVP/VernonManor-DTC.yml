@@ -1,0 +1,229 @@
+info:
+    name: 'Vernon Manor'
+    gamemode: 'DTC'
+    authors:
+    - 'RiotMaker808'
+    objective: "Destroy the enemy team's core" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -105,29,161
+            radius: 2
+            height: 0
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 1800  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 20000 # time that the world is frozen at default: world time cycles as usual
+    deathdrops: true
+    rewards:
+        kill: 
+            gold: 5 
+            xp: 2 
+        objective: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+
+teams:
+    red:  # team name (not used in game)
+        name: 'Red Team'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 100
+        spawns:
+            red-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -211,32,90
+                    radius: 1
+                    height: 0
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: red #optional, corresponds to the serverside name
+    blue:  # team name (not used in game)
+        name: 'Blue Team'  # team name (shown in game)
+        color: blue # optional - default = gray
+        max: 100
+        spawns:
+            blue-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 0,32,90
+                    radius: 1
+                    height: 0
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: blue #optional, corresponds to the serverside name
+
+kits:
+    red: #serverside name (not used in game)
+        name: "Red Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+            2:
+                item: diamond pickaxe
+            3:
+                item: wood
+                amount: 32
+            4:
+                item: golden apple
+                amount: 3
+            7:
+                item: cooked chicken
+                amount: 16
+            8:
+                item: torch
+                amount: 16
+            19:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FF0000'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: leather leggings
+                color: 'FF0000'
+            boots:
+                item: leather boots
+                color: 'FF0000'
+
+    blue: #serverside name (not used in game)
+        name: "Blue Kit"
+        items:
+            0: #slot
+                item: iron sword # material name
+            1:
+                item: bow
+            2:
+                item: diamond pickaxe
+            3:
+                item: wood
+                amount: 32
+            4:
+                item: golden apple
+                amount: 3
+            7:
+                item: cooked chicken
+                amount: 16
+            8:
+                item: torch
+                amount: 16
+            19:
+                item: arrow
+                amount: 64
+            28:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '0000FF'
+            chestplate:
+                item: chainmail chestplate
+            leggings:
+                item: leather leggings
+                color: '0000FF'
+            boots:
+                item: leather boots
+                color: '0000FF'
+
+cores:
+    mindistance: 2
+    material: obsidian
+    red:
+        cuboid:
+            min: -195,0,82
+            max: -177,28,99
+        name: 'Red Core'
+        team: red
+    blue:
+        cuboid:
+            min: -33,0,82
+            max: -17,28,98
+        name: 'Blue Core'
+        team: blue
+
+regions:
+    map:
+        areas:
+            base:
+                cuboid:
+                    min: -225,-500,45
+                    max: 14,250,134
+        rules:
+            deny-leave:
+                action: leave
+                access: deny
+                message: 'You cannot leave the map'
+    red-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -198,0,122
+                    max: -220,37,55
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: blue # optional, default any team
+                message: 'You cannot enter Red Teams spawn'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn' # optional
+    blue-spawn: # region name (not used in game)
+        areas:
+            base: #area name  (not used in game)
+                cuboid:
+                    min: -11,37,60
+                    max: 6,0,121
+        rules:
+            deny-enter: # rule name (not used in game)
+                action: enter
+                access: deny
+                team: red # optional, default any team
+                message: 'You cannot enter Blue Teams spawn'
+            deny-build:  # rule name (not used in game)
+                action: build
+                access: deny
+                message: 'You cannot build in the spawn' # optional
+            deny-destroy:  # rule name (not used in game)
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn' # optional
+    red-core:
+        areas:
+            base:
+                cuboid:
+                    min: -195,28,99
+                    max: -177,0,82
+        rules:
+            deny-build:
+                action: build
+                access: deny
+                team: red
+                material: obsidian
+                message: 'You cannot break your own core' # optional
+    blue-core:
+        areas:
+            base:
+                cuboid:
+                    min: -33,28,98
+                    max: -17,0,82
+        rules:
+            deny-build:
+                action: build
+                access: deny
+                team: blue
+                material: obsidian
+                message: 'You cannot break your own core' # optional

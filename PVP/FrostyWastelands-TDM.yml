@@ -1,0 +1,191 @@
+info:
+    name: 'Frosty Wastelands'
+    gamemode: 'TDM'
+    authors:
+    - 'Vertoner'
+    - 'FuzzNuggettt'
+    objective: "Make sure your team has the most kills at the end of the game to win!"
+    spawn:
+        cylinder:
+            base: -123,114,-30
+            radius: 2
+            height: 1
+        yaw: 0
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 600
+    deathmessages: true
+    frozentime: 1200
+    selectablekits: false
+    deathdrops: false
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        second:
+            gold: 5
+            xp: 5
+        kill:
+            gold: 5
+            xp: 5
+
+teams:
+    cyan:
+        name: 'Cyan Team'
+        color: dark aqua
+        max: 100
+        spawns:
+            cyanspawn1:
+                cylinder:
+                    base: 6,79,-29
+                    radius: 2
+                    height: 1
+                defaultkit: cyankit
+    purple:
+        name: 'Purple Team'
+        color: dark purple
+        max: 100
+        spawns:
+            cyanspawn1:
+                cylinder:
+                    base: -253,79,-28
+                    radius: 2
+                    height: 1
+                defaultkit: purplekit
+
+kits:
+    cyankit:
+        name: "Cyan Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+            1:
+                item: bow
+            2:
+                item: glass
+                amount: 64
+            3:
+                item: glass
+                amount: 64
+            4:
+                item: apple
+                amount: 16
+            5:
+                item: golden apple
+                amount: 5
+            19:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '00CCCC'
+            chestplate:
+                item: gold chestplate
+            leggings:
+                item: leather leggings
+                color: '00CCCC'
+            boots:
+                item: gold boots
+        potions:
+        - speed,1800,1
+    purplekit:
+        name: "Purple Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+            1:
+                item: bow
+            2:
+                item: glass
+                amount: 64
+            3:
+                item: glass
+                amount: 64
+            4:
+                item: apple
+                amount: 16
+            5:
+                item: golden apple
+                amount: 5
+            19:
+                item: arrow
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FF00FF'
+            chestplate:
+                item: gold chestplate
+            leggings:
+                item: leather leggings
+                color: 'FF00FF'
+            boots:
+                item: gold boots
+        potions:
+        - speed,1800,1
+
+regions:
+    spawnplatform:
+        areas:
+            platform:
+                cuboid:
+                    min: -132,101,-39
+                    max: -115,119,-23
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spawn platform!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the spawn platform!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn platform!'
+                
+    cyanspawnprotect:
+        areas:
+            cyanspawnprotect:
+                cuboid:
+                    min: 20,61,4
+                    max: -15,88,-59
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: purple
+                message: 'You cannot enter cyans spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    purplespawnprotect:
+        areas:
+            purplespawnprotect:
+                cuboid:
+                    min: -266,64,-62
+                    max: -233,88,0
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: cyan
+                message: 'You cannot enter purples spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
