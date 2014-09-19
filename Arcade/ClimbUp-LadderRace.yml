@@ -1,0 +1,62 @@
+info:
+    name: 'Climb Up'
+    gamemode: 'LADDERRACE'
+    authors:
+    - 'Spurlex'
+    - 'Tweeney'
+    objective: "Climb to the top of the ladder and press the button to score a point" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: 206,86,79
+            radius: 3
+            height: 1
+        yaw: 0 #optional
+        pitch: 0 #optional
+
+config:
+    forcerespawn: true # force respawn on death
+    timelimit: 300  # game length in seconds
+    rewards:
+        first: #optional
+            gold: 50 #optional default 0
+            xp: 50 #optional default 0
+        second: #optional
+            gold: 30 #optional default 0
+            xp: 30 #optional default 0
+        third: #optional
+            gold: 20 #optional default 0
+            xp: 20 #optional default 0
+teams:
+    players:  # team name (not use din game)
+        name: 'Players'  # team name (shown in game)
+        color: gold # optional - default = gray
+        max: 50
+        spawns:
+            spawn1:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 176,61,79
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+            spawn2:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 206,61,50
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+            spawn3:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 236,61,79
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+            spawn4:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: 206,61,108
+                    radius: 1
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
