@@ -1,0 +1,53 @@
+info:
+    name: 'Mob Rider'
+    gamemode: 'MOBRIDER'
+    authors:
+    - 'Spurlex'
+    - 'Tweeney'
+    objective: "Hit the other players off the island" #optional
+    spawn: # default spawn
+        cylinder: # cylinder or cuboid
+            base: -16,90,23
+            radius: 5
+            height: 1
+
+config:
+    forcerespawn: true # force respawn on death default: true
+    timelimit: 300  # game length in seconds
+    deathmessages: true # show death messages in game default: true
+    frozentime: 0 # time that the world is frozen at default: world time cycles as usual
+    deathdrops: false #default = true
+    rewards:
+        first: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+        second: #optional
+            gold: 10 #optional default 0
+            xp: 10 #optional default 0
+
+teams:
+    yellow-team:  # team name (not used in game)
+        name: 'Players'  # team name (shown in game)
+        color: dark red # optional - default = gray
+        max: 10  #optional - default = 50
+        spawns:
+            player-spawn:  # spawn name (not used in game)
+                cylinder:  # cylinder or cuboid
+                    base: -16,78,23
+                    radius: 5
+                    height: 1
+                yaw: 0 # optional
+                pitch: 0 # optional
+                defaultkit: 'default' #optional, corresponds to the serverside name
+
+kits:
+    default: #serverside name (not used in game)
+        name: "Kit!"
+        gold: 10 #default = 0
+        default: true #only if selectable kits active. default = false
+        items:
+            0: #slot
+                item: stick # material name
+                title: 'Hit Stick' # optional title - default: usual name
+
+mob: cow
