@@ -1,0 +1,43 @@
+info:
+    name: 'Square Spleef War'
+    gamemode: 'splegg'
+    authors:
+    - 'baca1525'
+    - 'FuzzNuggettt'
+    objective: "Use your gun to shoot snowballs to spleef players"
+    spawn:
+        cylinder:
+            base: 0, 96, -44
+            radius: 1
+            height: 1
+
+config:
+    forcerespawn: true
+    timelimit: 300
+    deathmessages: true
+    frozentime: 1200
+    selectablekits: false
+    deathdrops: false
+
+teams:
+    players:
+        name: 'Players'
+        color: dark red
+        max: 30
+        spawns:
+            player:
+                cylinder:
+                    base: 0, 86, -44
+                    radius: 1
+                    height: 1
+                yaw: 0
+                pitch: 0
+                defaultkit: 'default'
+
+kits:
+    default:
+        name: "Kit!"
+        default: true
+        items:
+            0:
+                item: diamond barding

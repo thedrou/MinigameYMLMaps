@@ -1,0 +1,62 @@
+info:
+    name: 'Jungle Jump'
+    gamemode: 'LADDERRACE'
+    authors:
+    - 'Karler'
+    - 'FuzzNuggettt'
+    objective: "Climb to the top of the ladder and press the button to score a point"
+    spawn:
+        cylinder:
+            base: 0,97,0
+            radius: 3
+            height: 1
+        yaw: 0
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 300
+    rewards:
+        first:
+            gold: 50
+            xp: 50
+        second:
+            gold: 30
+            xp: 30
+        third:
+            gold: 20
+            xp: 20
+teams:
+    players:
+        name: 'Players'
+        color: gold
+        max: 50
+        spawns:
+            spawn1:
+                cylinder:
+                    base: -0,76,-24
+                    radius: 1
+                    height: 1
+                yaw: 0
+                pitch: 0
+            spawn2:
+                cylinder:
+                    base: 25,76,0
+                    radius: 1
+                    height: 1
+                yaw: 90
+                pitch: 0
+            spawn3:
+                cylinder:
+                    base: 0,76,26
+                    radius: 1
+                    height: 1
+                yaw: 180
+                pitch: 0
+            spawn4:
+                cylinder:
+                    base: -25,76,1
+                    radius: 1
+                    height: 1
+                yaw: -90
+                pitch: 0
