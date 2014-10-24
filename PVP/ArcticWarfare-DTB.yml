@@ -1,0 +1,363 @@
+info:
+    name: 'Arctic Warfare'
+    gamemode: 'DTB'
+    authors:
+    - 'KittyKartel'
+    - 'FuzzNuggettt'
+    objective: "Detonate the other teams bomb located near the beacon!"
+    spawn:
+        cylinder:
+            base: -1,153,109
+            radius: 2
+            height: 1
+        yaw: 90
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+    deathmessages: true
+    frozentime: 1200
+    selectablekits: false
+    deathdrops: true
+    timings:
+        arm: 10
+        defuse: 5
+        explode: 120
+    rewards:
+        kill:
+            gold: 5
+            xp: 5
+        objective:
+            gold: 50
+            xp: 50
+
+teams:
+    red:
+        name: 'Crimson Team'
+        color: dark red
+        max: 50
+        spawns:
+            pinkspawn1:
+                cylinder:
+                    base: -45,116,-0
+                    radius: 1
+                    height: 1
+                defaultkit: redkit
+    blue:
+        name: 'Crystal Team'
+        color: blue
+        max: 50
+        spawns:
+            bluespawn1:
+                cylinder:
+                    base: 43,116,218
+                    radius: 1
+                    height: 1
+                defaultkit: bluekit
+
+kits:
+    redkit:
+        name: "Red Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            4:
+                item: diamond pickaxe
+                enchantments:
+                - durability:3
+            2:
+                item: blaze powder
+                title: '§aFuse - §7§nHold§r§7 right click on §nenemies§r§7 TNT to ignite'
+            3:
+                item: shears
+                title: '§aDefuser - §7§nHold§r§7 right click on §nyour§r§7 TNT to defuse'
+            5:
+                item: wood
+                amount: 64
+            6:
+                item: glass
+                amount: 64
+            7:
+                item: cooked beef
+                amount: 12
+            8:
+                item: golden apple
+                amount: 3
+            27:
+                item: arrow
+                amount: 32
+            28:
+                item: arrow
+                amount: 32
+            32:
+                item: wood
+                amount: 64
+            23:
+                item: wood
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: 'FF0000'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: 'FF0000'
+
+    bluekit:
+        name: "Blue Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            4:
+                item: diamond pickaxe
+                enchantments:
+                - durability:3
+            2:
+                item: blaze powder
+                title: '§aFuse - §7§nHold§r§7 right click on §nenemies§r§7 TNT to ignite'
+            3:
+                item: shears
+                title: '§aDefuser - §7§nHold§r§7 right click on §nyour§r§7 TNT to defuse'
+            5:
+                item: wood
+                amount: 64
+            6:
+                item: glass
+                amount: 64
+            7:
+                item: cooked beef
+                amount: 12
+            8:
+                item: golden apple
+                amount: 3
+            27:
+                item: arrow
+                amount: 32
+            28:
+                item: arrow
+                amount: 32
+            32:
+                item: wood
+                amount: 64
+            23:
+                item: wood
+                amount: 64
+            helmet:
+                item: leather helmet
+                color: '0000FF'
+            chestplate:
+                item: iron chestplate
+            leggings:
+                item: iron leggings
+            boots:
+                item: leather boots
+                color: '0000FF'
+
+
+regions:
+    spawnplatform:
+        areas:
+            platform:
+                cuboid:
+                    min: 1,146,106
+                    max: -5,159,112
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spawn platform!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the spawn platform!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn platform!'
+                
+    redspawn:
+        areas:
+            redspawn:
+                cuboid:
+                    min: -17,103,17
+                    max: -48,134,-13
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: blue
+                message: 'You cannot enter Crimsons spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+            allow-destroy:
+                action: destroy
+                access: allow
+                material: iron block
+            allow-destroydia:
+                action: destroy
+                access: allow
+                material: iron ore
+                
+    bluespawn:
+        areas:
+            redspawn:
+                cuboid:
+                    min: 14,103,200
+                    max: 44,134,230
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: red
+                message: 'You cannot enter Crystals spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+            allow-destroy:
+                action: destroy
+                access: allow
+                material: iron block
+            allow-destroydia:
+                action: destroy
+                access: allow
+                material: iron ore
+                
+    redbomb:
+        areas:
+            redbomb:
+                cuboid:
+                    min: 17,105,21
+                    max: 17,106,21
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the bomb!'
+                
+    bluebomb:
+        areas:
+            bluebomb:
+                cuboid:
+                    min: -20,105,196
+                    max: -20,106,196
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the bomb!'
+                
+    redbeacon:
+        areas:
+            redbeacon:
+                cuboid:
+                    min: 13,100,25
+                    max: 19,104,19
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                material: beacon
+                message: 'You cannot destroy the beacon!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                material: emerald block
+                message: 'You cannot destroy the beacon!'
+                
+    bluebeacon:
+        areas:
+            bluebeacon:
+                cuboid:
+                    min: -16,100,192
+                    max: -22,104,198
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                material: beacon
+                message: 'You cannot destroy the beacon!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                material: emerald block
+                message: 'You cannot destroy the beacon!'
+                
+    redunderbomb:
+        areas:
+            under1:
+                cuboid:
+                    min: 16,200,22
+                    max: 18,40,20
+            under2:
+                cuboid:
+                    min: 15,40,19
+                    max: 19,200,23
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy around the bomb!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build around the bomb!'
+                
+    blueunderbomb:
+        areas:
+            under1:
+                cuboid:
+                    min: -19,200,195
+                    max: -21,40,197
+            under2:
+                cuboid:
+                    min: -18,40,198
+                    max: -22,200,194
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy around the bomb!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build around the bomb!'
+
+bombs:
+    redbomb:
+        name: 'Crimsons Bomb'
+        team: red
+        block: 17,106,21
+
+    bluebomb:
+        name: 'Crystals Bomb'
+        team: blue
+        block: -20,106,196

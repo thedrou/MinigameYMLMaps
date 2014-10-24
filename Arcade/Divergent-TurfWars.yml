@@ -1,0 +1,120 @@
+info:
+    name: 'Divergent'
+    gamemode: 'TURFWARS'
+    authors:
+    - 'iswirda'
+    - 'SeanMe'
+    - 'FuzzNuggettt'
+    objective: "Control the Turf to win"
+    spawn:
+        cylinder:
+            base: 0,93,-20
+            radius: 2
+            height: 1
+        yaw: -180
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 300
+    deathmessages: true
+    frozentime: 1200
+    deathdrops: false
+    rewards:
+        first:
+            gold: 10
+            xp: 10
+        second:
+            gold: 5
+            xp: 5
+
+teams:
+    greenteam:
+        name: 'Green Team'
+        color: green
+        max: 20
+        spawns:
+            greenspawn2:
+                cylinder:
+                    base: 3,68,71
+                    radius: 1
+                    height: 1
+                yaw: -180
+                pitch: 0
+                defaultkit: greenkit
+
+    orangeteam:
+        name: 'Orange Team'
+        color: gold
+        max: 20
+        spawns:
+            orangespawn2:
+                cylinder:
+                    base: -2,68,-113
+                    radius: 1
+                    height: 1
+                yaw: 0
+                pitch: 0
+                defaultkit: orangekit
+
+
+kits:
+    greenkit:
+        items:
+            0:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            1:
+                item: wool
+                amount: 30
+            9:
+                item: arrow
+            helmet:
+                item: leather helmet
+                color: '00AA00'
+            chestplate:
+                item: leather chestplate
+                color: '00AA00'
+            leggings:
+                item: leather leggings
+                color: '00AA00'
+            boots:
+                item: leather boots
+                color: '00AA00'
+    orangekit:
+        items:
+            0:
+                item: bow
+                enchantments:
+                - arrow infinite:1
+            1:
+                item: wool
+                amount: 30
+            9:
+                item: arrow
+            helmet:
+                item: leather helmet
+                color: '00AA00'
+            chestplate:
+                item: leather chestplate
+                color: '00AA00'
+            leggings:
+                item: leather leggings
+                color: '00AA00'
+            boots:
+                item: leather boots
+                color: '00AA00'
+
+arena:
+    cuboid:
+        min: -30,65,-108
+        max: 30,65,65
+    material: stained clay
+    colours:
+        1:
+            colour: orange
+            team: orangeteam
+        2:
+            colour: lime
+            team: greenteam
