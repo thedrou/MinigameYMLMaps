@@ -1,0 +1,299 @@
+info:
+    name: 'Candyland 2.0'
+    gamemode: 'DTB'
+    authors:
+    - 'Penguin887'
+    - 'ItsGeo'
+    - 'Drou'
+    objective: "Detonate the other teams bomb located near the beacon!"
+    spawn:
+        cylinder:
+            base: 1,145,-101
+            radius: 2
+            height: 1
+        yaw: -90
+        pitch: 0
+
+config:
+    forcerespawn: true
+    timelimit: 1800
+    deathmessages: true
+    frozentime: 13000
+    selectablekits: false
+    deathdrops: true
+    timings:
+        arm: 15
+        defuse: 5
+        explode: 120
+    rewards:
+        kill:
+            gold: 5
+            xp: 5
+        objective:
+            gold: 50
+            xp: 50
+
+teams:
+    green:
+        name: 'Green Team'
+        color: green
+        max: 50
+        spawns:
+            greenspawn1:
+                cylinder:
+                    base: 38,88,104
+                    radius: 1
+                    height: 1
+                yaw: 0
+                pitch: 0
+                defaultkit: greenkit
+    red:
+        name: 'Red Team'
+        color: red
+        max: 50
+        spawns:
+            redspawn1:
+                cylinder:
+                    base: 21,88,-35
+                    radius: 1
+                    height: 1
+                yaw: -180
+                pitch: 0
+                defaultkit: redkit
+
+kits:
+    greenkit:
+        name: "Green Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+            2:
+                item: blaze powder
+                title: '§aFuse - §7§nHold§r§7 right click on §nenemies§r§7 TNT to ignite'
+            3:
+                item: shears
+                title: '§aDefuser - §7§nHold§r§7 right click on §nyour§r§7 TNT to defuse'
+            4:
+                item: pumpkin_pie
+                amount: 64
+            5:
+                item: cake
+                amount: 1
+            6:
+                item: glass
+                amount: 64
+            7:
+                item: golden apple
+                amount: 10
+            8:
+                item: arrow
+                amount: 32
+            helmet:
+                item: leather helmet
+                color: '667F33'
+            chestplate:
+                item: leather chestplate
+                color: '667F33'
+            leggings:
+                item: gold leggings
+                color: '55FF55'
+            boots:
+                item: chainmail boots
+                color: '55FF55'
+        potions:
+             - invisibility,3,2 # effect,duration,amplifier amplifier optional
+    greenkit:
+        name: "Green Kit!"
+        default: true
+        items:
+            0:
+                item: stone sword
+                enchantments:
+                - damage all:1
+            1:
+                item: bow
+            2:
+                item: blaze powder
+                title: '§aFuse - §7§nHold§r§7 right click on §nenemies§r§7 TNT to ignite'
+            3:
+                item: shears
+                title: '§aDefuser - §7§nHold§r§7 right click on §nyour§r§7 TNT to defuse'
+            4:
+                item: pumpkin_pie
+                amount: 64
+            5:
+                item: cake
+                amount: 1
+            6:
+                item: glass
+                amount: 64
+            7:
+                item: golden apple
+                amount: 10
+            8:
+                item: arrow
+                amount: 32
+            helmet:
+                item: leather helmet
+                color: '993333'
+            chestplate:
+                item: leather chestplate
+                color: '993333'
+            leggings:
+                item: gold leggings
+                color: '55FF55'
+            boots:
+                item: chainmail boots
+                color: '55FF55'
+        potions:
+             - invisibility,3,2 # effect,duration,amplifier amplifier optional
+
+regions:
+    spawnplatform:
+        areas:
+            platform:
+                cuboid:
+                    min: -3,125,36
+                    max: 1,128,32
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                message: 'You cannot enter the spawn platform!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build on the spawn platform!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the spawn platform!'
+                
+    greenspawn:
+        areas:
+            greenspawn:
+                cuboid:
+                    min: -14,87,85
+                    max: 64,108,113
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: red
+                message: 'You cannot enter Greens spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    redspawn:
+        areas:
+            redspawn:
+                cuboid:
+                    min: 46,77,-18
+                    max: -9,108,-48
+        rules:
+            deny-enter:
+                action: enter
+                access: deny
+                team: green
+                message: 'You cannot enter Reds spawn!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build in spawn areas!'
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy in spawn areas!'
+                
+    greenbomb:
+        areas:
+            greenbomb:
+                cuboid:
+                    min: -9,91,70
+                    max: 3,95,76
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the bomb!'
+            deny-flow:
+                action: flow
+                access: deny
+                
+    redbomb:
+        areas:
+            redbomb:
+                cuboid:
+                    min: 49,91,-2
+                    max: 55,96,-8
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy the bomb!'
+                
+    greenunderbomb:
+        areas:
+            under1:
+                cuboid:
+                    min: 12,87,69
+                    max: 0,91,77
+                flow:
+                    min: 5,75,-183
+                    max: -3,71,-177
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy around the bomb!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build around the bomb!'
+            deny-flow:
+                action: flow
+                access: deny
+                
+    redunderbomb:
+        areas:
+            under1:
+                cuboid:
+                    min: 3,200,-30
+                    max: -2,40,-26
+                flow:
+                    min: 5,71,-27
+                    max: -3,75,-27
+        rules:
+            deny-destroy:
+                action: destroy
+                access: deny
+                message: 'You cannot destroy around the bomb!'
+            deny-build:
+                action: build
+                access: deny
+                message: 'You cannot build around the bomb!'
+            deny-flow:
+                action: flow
+                access: deny
+
+bombs:
+    greenbomb:
+        name: 'Green''s Bomb'
+        team: green
+        block: 1,74,-176
+
+    redbomb:
+        name: 'Red''s Bomb'
+        team: red
+        block: 1,74,-28
